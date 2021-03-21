@@ -30,13 +30,13 @@ export default class Navbar extends Component {
                             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                            <a className="nav-link" href="/">Features</a>
+                            <Link className="nav-link " aria-current="page" to="/CreatePost">Create Post</Link>
                             </li>
                             <li className="nav-item">
-                            <a className="nav-link" href="/">Pricing</a>
+                            <Link className="nav-link " aria-current="page" to="/CreateAcount">Create Account</Link>
                             </li>
                             <li className="nav-item">
-                            <Link className="nav-link " aria-current="page" to="/CreateAcount">Create an Acount</Link>
+                            <Link className="nav-link " aria-current="page" to="/login">Login</Link>
                             </li>
                         </ul>
                         </div>
