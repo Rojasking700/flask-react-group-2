@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
+    constructor(){
+        super();
+        this.state ={
+            redirect: null
+        }
+    }
+
+    async createAcount(e){
+        e.preventDefault();
+        let token = await this.props.getToken()
+        let res = await fetch(`http:`)
+    }
+
     render() {
         return (
             <div>
@@ -23,7 +36,7 @@ export default class Navbar extends Component {
                             <a className="nav-link" href="/">Pricing</a>
                             </li>
                             <li className="nav-item">
-                            <a className="nav-link disabled" href="/" tabIndex="-1" aria-disabled="true">Disabled</a>
+                            <Link className="nav-link " aria-current="page" to="/CreateAcount">Create an Acount</Link>
                             </li>
                         </ul>
                         </div>
