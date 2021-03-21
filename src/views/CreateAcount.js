@@ -48,8 +48,10 @@ export default class CreateAcount extends Component {
                     <label for="exampleInputPassword1" className="form-label">Email</label>
                     <input type="text" className="form-control" name="email" placeholder="Email" />
                     <br></br>
+
                     <label for="exampleInputPassword1" className="form-label">Password</label>
                     <input type="passwordField" className="form-control" name="password" placeholder="Password" />
+
                     <br></br>
                     <label for="exampleInputPassword1" className="form-label">Confirm Password</label>
                     <input type="passwordField" className="form-control" name="confrimPassword" placeholder="Confirm Password" />
