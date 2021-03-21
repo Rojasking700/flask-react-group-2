@@ -42,7 +42,7 @@ export default class CreateAcount extends Component {
                     <br></br>
                     <input type="text" className="form-control" name="email" placeholder="Email" />
                     <br></br>
-                    <input type="text" className="form-control" name="password" placeholder="Password" />
+                    <input type="password" className="form-control" name="password" placeholder="Password" />
                     <br></br>
                     <button type="submit" className="btn btn-outline-info">Submit</button>
                     <br></br>
