@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
+
 
 export default class CreateAcount extends Component {
     constructor(){
@@ -10,35 +11,41 @@ export default class CreateAcount extends Component {
         }
     }
 
-    render() {
-        return (
-            <div className="container">
-                <div>
-                    <h2>Create an account</h2>
-                </div>
-                <form onSubmit={(e) => this.createPost(e)}>
-                    {/* <input type="text" className="form-control" name="title" placeholder="Title" />
-                    <input type="text" className="form-control" name="content" placeholder="Content" />
-                    <button type="submit" className=" btn btn-outline-info">Submit</button> */}
+    async createAccount(e){
+        e.preventDefault()
+        // let token = await this.props.get_token()
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json")
+        let res = await fetch('http://127.0.0.1:5000/auth/signup', {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify({
+                "username": e.target.username.value,
+                "email": e.target.email.value,
+                "password": e.target.password.value
+            })
+        })
+        // let newAccount = await res.json();
+        this.setState({ redirect: `/index/`})
 
-                    <div className="mb-3">
-                        <label for="exampleInputEmail1" className="form-label">Email address</label>
-                        <input type="email" className="form-control" name="email" placeholder="email@domain.com" aria-describedby="emailHelp"/>
-                        {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
-                    </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Username</label>
-                        <input type="password" className="form-control" name="username" placeholder="Username"/>
-                    </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" name="Password" placeholder="Password"/>
-                    </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Confirm Password</label>
-                        <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm password"/>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>                    
+    }
+
+    render() {
+        if(this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
+        return (
+
+            <div>
+                <form onSubmit={(e) => this.createAccount(e)}>
+                    <input type="text" className="form-control" name="username" placeholder="Username" />
+                    <br></br>
+                    <input type="text" className="form-control" name="email" placeholder="Email" />
+                    <br></br>
+                    <input type="text" className="form-control" name="password" placeholder="Password" />
+                    <br></br>
+                    <button type="submit" className="btn btn-outline-info">Submit</button>
+                    <br></br>
                 </form>
             </div>
         )
