@@ -12,7 +12,7 @@ export default class CreatePost extends Component {
 
     async createPost(e){
         e.preventDefault()
-        // let token = await this.props.get_token()
+        let token = await this.props.get_token()
         var myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer pvZAbRiD8cuJ5+b0tS+VwxZDfpNfl4Os");
         myHeaders.append("Content-Type", "application/json")
