@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
+
 export default class CreateAcount extends Component {
     constructor(){
         super();
@@ -28,11 +29,13 @@ export default class CreateAcount extends Component {
         this.setState({ redirect: `/index/`})
 
     }
+
     render() {
         if(this.state.redirect) {
             return <Redirect to={this.state.redirect} />
         }
         return (
+
             <div>
                 <form onSubmit={(e) => this.createAccount(e)}>
                     <input type="text" className="form-control" name="username" placeholder="Username" />
