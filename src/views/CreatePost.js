@@ -33,7 +33,7 @@ export default class CreatePost extends Component {
             return <Redirect to={this.state.redirect} />
         }
         return (
-            <div>
+            <div className="container">
                 <form onSubmit={(e) => this.createPost(e)}>
                     <input type="text" className="form-control" name="title" placeholder="Title" />
                     <br></br>
