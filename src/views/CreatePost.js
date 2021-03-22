@@ -12,20 +12,26 @@ export default class CreatePost extends Component {
 
     async createPost(e){
         e.preventDefault()
-        let token = await this.props.get_token()
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer pvZAbRiD8cuJ5+b0tS+VwxZDfpNfl4Os");
-        myHeaders.append("Content-Type", "application/json")
-        let res = await fetch('http://localhost:5000/blog/createpost', {
+        console.log("perhaps")
+        let token = await this.props.getToken()
+        console.log(token)
+        // var myHeaders = new Headers();
+        // myHeaders.append("Authorization", "Bearer pvZAbRiD8cuJ5+b0tS+VwxZDfpNfl4Os");
+        // myHeaders.append("Content-Type", "application/json")
+        let res = await fetch(`http://localhost:5000/blog/createpost`,{
             method: 'POST',
-            headers: myHeaders,
+            headers: {
+                'Authorization': 'Bearer ' + token['token'],
+                'Content-Type' : 'application/json'
+            }, 
             body: JSON.stringify({
                 "title": e.target.title.value,
                 "content": e.target.content.value
             })
         })
         let newPost = await res.json();
-        this.setState({ redirect: `/blog/${newPost.id}`})
+        // console.log(newpost)
+        this.setState({redirect: `/blogdetail/${newPost.id}`})
 
     }
     render() {
