@@ -7,6 +7,7 @@ import CreateAcount from './views/CreateAcount';
 import CreatePost from './views/CreatePost';
 import Home from './views/Home';
 import Login from './views/Login';
+import Footer from './components/Footer';
 // import { Redirect } from 'react-router-dom'
 
 export default class App extends Component {
@@ -57,6 +58,7 @@ export default class App extends Component {
           <Route exact path="/createpost" render={() => <CreatePost getToken={this.getToken}/> } />
         </Switch>
       </main>
+      <Footer />
       </div>
     )
   }
