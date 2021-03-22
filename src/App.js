@@ -8,6 +8,7 @@ import CreatePost from './views/CreatePost';
 import Home from './views/Home';
 import Login from './views/Login';
 import Footer from './components/Footer';
+import CreateComment from './views/CreateComment';
 // import { Redirect } from 'react-router-dom'
 
 export default class App extends Component {
@@ -17,18 +18,21 @@ export default class App extends Component {
       redirect: null,
       posts: [],
       username: null,
-      password: null
+      password: null,
+      remember_me : false
     }
   }
 
   handleLogin = (e) =>{
     e.preventDefault();
-    let username = e.target.username.value;
-    let password = e.target.password.value;
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+    const remember_me = e.target.remember_me.value;
     this.setState({
       username : username,
       password : password,
-      redirect: `/`
+      redirect: `/`,
+      remember_me : remember_me
     })
     this.getToken()
   }
@@ -52,10 +56,11 @@ export default class App extends Component {
       <main>
         <Switch>
           <Route exact path="/" render={() => <Home blog={this.blog}  />} />
-          <Route exact path="/blogdetail/:id" render={({match}) => <BlogDetail match={match} /> } />
-          <Route exact path="/createacount" render={() => <CreateAcount /> } />
+          <Route exact path="/blogdetail/:id" render={({ match }) => <BlogDetail match={ match } getToken={this.getToken}/> } />
+          <Route exact path="/createacount" render={() => <CreateAcount getToken={this.getToken}/> } />
           <Route exact path="/login" render={() => <Login handleLogin={this.handleLogin} getToken={this.getToken} redirect={this.state.redirect}/> } />
           <Route exact path="/createpost" render={() => <CreatePost getToken={this.getToken}/> } />
+          <Route exact path="/createcomment/:id" render={({match}) => <CreateComment match={ match } getToken={this.getToken}/> } />
         </Switch>
       </main>
       <Footer />
