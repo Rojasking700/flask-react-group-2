@@ -31,6 +31,12 @@ export default class Login extends Component {
                         <label for="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control" name="password" placeholder="Password"/>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="remember_me" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Remember me
+                        </label>
+                    </div>
                     <button type="submit" className="btn">Submit</button>  
                 </form>
             </div>

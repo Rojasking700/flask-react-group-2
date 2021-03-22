@@ -7,16 +7,33 @@ export default class BlogDetail extends Component {
         super();
 
         this.state={
-            blog: []
+            blog: [],
+            comments: []
         }
     }
 
-    componentDidMount(){
-        fetch(`http://127.0.0.1:5000/blog/posts/${this.props.match.params.id}`)
-        .then(res => res.json())
-        .then(data => this.setState({blog: data}))
-        .catch(error => console.log(error))
-    }
+    // componentDidMount(){
+    //     fetch(`http://127.0.0.1:5000/blog/posts/${this.props.match.params.id}`)
+    //     .then(res => res.json())
+    //     .then(data => this.setState({blog: data}))
+    //     .catch(error => console.log(error))
+    // }
+
+    async componentDidMount(){
+        let token = await this.props.getToken();
+        console.log(token)
+        let res = await fetch(`http://127.0.0.1:5000/blog/posts/${this.props.match.params.id}`, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token['token'],
+                'Content-Type' : 'application/json'
+            }
+        })
+        let posts = await res.json()
+        this.setState({blog:posts})
+    };
+    
+
 
     render() {
         const p = this.state.blog;
