@@ -7,6 +7,7 @@ import CreateAcount from './views/CreateAcount';
 import CreatePost from './views/CreatePost';
 import Home from './views/Home';
 import Login from './views/Login';
+import Footer from './components/Footer';
 
 export default class App extends Component {
   constructor(){
@@ -41,6 +42,7 @@ export default class App extends Component {
           <Route exact path="/createpost" render={() => <CreatePost /> } />
         </Switch>
       </main>
+      <Footer />
       </div>
     )
   }

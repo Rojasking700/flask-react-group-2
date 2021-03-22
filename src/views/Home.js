@@ -32,9 +32,21 @@ export default class Home extends Component {
     render() {
         return (
             <React.Fragment>
+
                 <div className="container">
-                    <div className="row">
-                        {this.state.blog.reverse().map(p => <Blog key={p.id} blog={p} title={this.props.title} content={this.props.content} user={this.props.user} />)}
+                    <div class="jumbotron">
+                    <h1 class="display-4">Hungry to expand your recipe rolodex?</h1>
+                    <p class="lead">This is an invitation to the internet's first self-proclaimed dinner party where you the user shares, rates, recreates, and etc. amongst other chefs!</p>
+                    <hr class="my-4"></hr>
+                    <p>Reddit? Never heard of it. </p>
+                    <p class="lead">
+                        <a class="btn" href="#" role="button">Get Started!</a>
+                    </p>
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                            {this.state.blog.reverse().map(p => <Blog key={p.id} blog={p} title={this.props.title} content={this.props.content} user={this.props.user} />)}
+                        </div>
                     </div>
                 </div>
             </React.Fragment>
