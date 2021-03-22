@@ -8,6 +8,7 @@ import CreatePost from './views/CreatePost';
 import Home from './views/Home';
 import Login from './views/Login';
 import Footer from './components/Footer';
+import CreateComment from './views/CreateComment';
 // import { Redirect } from 'react-router-dom'
 
 export default class App extends Component {
@@ -56,9 +57,10 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Home blog={this.blog}  />} />
           <Route exact path="/blogdetail/:id" render={({ match }) => <BlogDetail match={ match } getToken={this.getToken}/> } />
-          <Route exact path="/createacount" render={() => <CreateAcount /> } />
+          <Route exact path="/createacount" render={() => <CreateAcount getToken={this.getToken}/> } />
           <Route exact path="/login" render={() => <Login handleLogin={this.handleLogin} getToken={this.getToken} redirect={this.state.redirect}/> } />
           <Route exact path="/createpost" render={() => <CreatePost getToken={this.getToken}/> } />
+          <Route exact path="/createcomment/:id" render={({match}) => <CreateComment match={ match } getToken={this.getToken}/> } />
         </Switch>
       </main>
       <Footer />

@@ -13,17 +13,20 @@ export default class CreateAcount extends Component {
 
     async createAccount(e){
         e.preventDefault()
-        // let token = await this.props.get_token()
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json")
+        // let token = await this.props.getToken()
+        // var myHeaders = new Headers();
+        // myHeaders.append("Content-Type", "application/json")
         let res = await fetch('http://127.0.0.1:5000/auth/signup', {
             method: 'POST',
-            headers: myHeaders,
+            headers: {
+                // 'Authorization': 'Bearer ' + token['token'],
+                'Content-Type' : 'application/json'
+            }, 
             body: JSON.stringify({
                 "username": e.target.username.value,
                 "email": e.target.email.value,
                 "password": e.target.password.value,
-                "confirm_password": e.target.confrimPassword.value,
+                "confirm_password": e.target.confirmPassword.value,
                 "token": null,
                 "token_expiration": null
 
@@ -51,11 +54,11 @@ export default class CreateAcount extends Component {
                     <br></br>
 
                     <label for="exampleInputPassword1" className="form-label">Password</label>
-                    <input type="passwordField" className="form-control" name="password" placeholder="Password" />
+                    <input type="password" className="form-control" name="password" placeholder="Password" />
 
                     <br></br>
                     <label for="exampleInputPassword1" className="form-label">Confirm Password</label>
-                    <input type="passwordField" className="form-control" name="confirmPassword" placeholder="Confirm Password" />
+                    <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" />
                     <br></br> 
                     <button type="submit" className="btn">Submit</button>
                 </form>
