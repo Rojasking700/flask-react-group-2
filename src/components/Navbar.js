@@ -20,7 +20,7 @@ export default class Navbar extends Component {
             <div>
                     <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">
-                        <Link className="navbar-brand" to="/">Navbar</Link>
+                        <Link className="navbar-brand" to="/"><span class="fas fa-utensils"></span></Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                         </button>
