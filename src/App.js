@@ -8,7 +8,7 @@ import CreatePost from './views/CreatePost';
 import Home from './views/Home';
 import Login from './views/Login';
 import Footer from './components/Footer';
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 
 export default class App extends Component {
   constructor(){
@@ -30,14 +30,14 @@ export default class App extends Component {
       password : password,
       redirect: `/`
     })
-    this.getToken(username,password)
+    this.getToken()
   }
 
-  getToken = async (username, password) => {
+  getToken = async () => {
     let res = await fetch('http://localhost:5000/tokens', {
           method: 'POST',
           headers :{
-            'Authorization': 'Basic ' + btoa(`${username}:${password}`)
+            'Authorization': 'Basic ' + btoa(`${this.state.username}:${this.state.password}`)
           }
     })
     let token = await res.json();
@@ -55,7 +55,7 @@ export default class App extends Component {
           <Route exact path="/blogdetail/:id" render={({match}) => <BlogDetail match={match} /> } />
           <Route exact path="/createacount" render={() => <CreateAcount /> } />
           <Route exact path="/login" render={() => <Login handleLogin={this.handleLogin} getToken={this.getToken} redirect={this.state.redirect}/> } />
-          <Route exact path="/createpost" render={() => <CreatePost /> } />
+          <Route exact path="/createpost" render={() => <CreatePost getToken={this.getToken}/> } />
         </Switch>
       </main>
       <Footer />

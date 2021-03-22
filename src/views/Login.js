@@ -11,11 +11,7 @@ export default class Login extends Component {
             user: []
         }
     }
-    // async login(e){
-    //     e.preventDefault();
-    //     let token  = await
-
-    // }
+    
 
     render() {
         if(this.props.redirect) {
