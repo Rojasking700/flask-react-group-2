@@ -18,11 +18,9 @@ export default class Login extends Component {
             return <Redirect to={this.props.redirect} />
         }
         return (
-            <div className="container">
-                <div>
-                    <h2>Login</h2>
-                </div>
-                <form onSubmit={(e) => this.props.handleLogin(e)}>
+            <div className="container no-padding">
+                <h1 className="h1">Welcome back, Chef!</h1>
+                <form contentEditable="True" onSubmit={(e) => this.props.handleLogin(e)}>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Username</label>
                         <input type="text" className="form-control" name="username" placeholder="Username"/>

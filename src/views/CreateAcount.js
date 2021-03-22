@@ -40,7 +40,8 @@ export default class CreateAcount extends Component {
         }
         return (
 
-            <div className="container">
+            <div className="container no-padding">
+                <h1 className="h1">Cheesed to meet you?</h1>
                 <form onSubmit={(e) => this.createAccount(e)}>
                     <label for="exampleInputPassword1" className="form-label">Username</label>
                     <input type="text" className="form-control" name="username" placeholder="Username" />
@@ -54,10 +55,15 @@ export default class CreateAcount extends Component {
 
                     <br></br>
                     <label for="exampleInputPassword1" className="form-label">Confirm Password</label>
-                    <input type="passwordField" className="form-control" name="confrimPassword" placeholder="Confirm Password" />
-                    <button type="submit" className="btn btn-outline-info">Submit</button>
-                    <br></br>
+                    <input type="passwordField" className="form-control" name="confirmPassword" placeholder="Confirm Password" />
+                    <br></br> 
+                    <button type="submit" className="btn">Submit</button>
                 </form>
+                <div>
+                    <br/><br/>
+                    <h5 className="bookmark"><i class="far fa-bookmark"></i>  Don't forget to bookmark us to your home screen!</h5>
+
+                </div>
             </div>
         )
     }
