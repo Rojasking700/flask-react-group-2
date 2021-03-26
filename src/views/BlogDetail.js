@@ -9,7 +9,8 @@ export default class BlogDetail extends Component {
 
         this.state={
             blog: [],
-            comments: []
+            comments: [],
+            token1: ''
         }
     }
 
@@ -21,6 +22,7 @@ export default class BlogDetail extends Component {
     // }
 
     async componentDidMount(){
+        console.log('Mounted blogdetail')
         let token = await this.props.getToken();
         console.log(token)
         let res = await fetch(`http://127.0.0.1:5000/blog/posts/${this.props.match.params.id}`, {
@@ -40,25 +42,27 @@ export default class BlogDetail extends Component {
         let posts = await res.json()
         let comments = await res2.json()
         this.setState({blog:posts, comments:comments})
+        // console.log(this.token1)
     };
     
     
 
 
     render() {
+        // console.log(this.token1)
         const p = this.state.blog;
-        const c = this.state.comments;
+        // const c = this.state.comments;
         return (
             <div className="container">
-                <div class="card mb-3">
+                <div className="card mb-3">
                 <img
                     src="https://mdbootstrap.com/img/new/slides/041.jpg"
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                 />
-                <div class="card-body">
-                    <h5 class="card-title">{p.title}</h5>
-                    <p class="card-text">
+                <div className="card-body">
+                    <h5 className="card-title">{p.title}</h5>
+                    <div className="card-text">
                     {p.content}
                         <Link to="/">
                             <button className="btn btn-secondary float-end">Back to Blog</button>
@@ -85,7 +89,7 @@ export default class BlogDetail extends Component {
                         </div>
                         </div>   
 
-                    </p>
+                    </div>
                     <p className="card-text">
                     <small className="text-muted">Last updated 3 mins ago by {p.user}</small>
                     </p>

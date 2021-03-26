@@ -10,11 +10,16 @@ export default class CreatePost extends Component {
         }
     }
 
+    async componentDidMount(){
+        console.log('mounted create post')
+        this.props.getToken()
+    }
+
     async createPost(e){
         e.preventDefault()
         console.log("perhaps")
         let token = await this.props.getToken()
-        console.log(token)
+        // console.log(token)
         // var myHeaders = new Headers();
         // myHeaders.append("Authorization", "Bearer pvZAbRiD8cuJ5+b0tS+VwxZDfpNfl4Os");
         // myHeaders.append("Content-Type", "application/json")
@@ -49,7 +54,7 @@ export default class CreatePost extends Component {
                 <form onSubmit={(e) => this.createPost(e)}>
                     <input type="text" className="form-control" name="title" placeholder="Title" />
                     <br></br>
-                    <textarea type="text" className="form-control" rows={8} cols={50} name='message' placeholder='do it for the culture'  />
+                    <textarea type="text" className="form-control" rows={8} cols={50} name='content' placeholder='do it for the culture'  />
                     <br></br>
                     <button type="submit" className="btn">Submit</button>
                     <br></br>

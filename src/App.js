@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Switch, Route } from 'react-router-dom';
+// import axios from "axios";
 import './App.css';
 import Navbar from './components/Navbar';
 import BlogDetail from './views/BlogDetail';
@@ -19,11 +20,15 @@ export default class App extends Component {
       posts: [],
       username: null,
       password: null,
-      remember_me : false
+      remember_me : false,
+      token1: null
     }
-  }
 
-  handleLogin = (e) =>{
+  }
+ 
+  
+
+   handleLogin = async(e) =>{
     e.preventDefault();
     const username = e.target.username.value;
     const password = e.target.password.value;
@@ -31,28 +36,47 @@ export default class App extends Component {
     this.setState({
       username : username,
       password : password,
-      redirect: `/`,
+      // redirect: `/`,
       remember_me : remember_me
     })
-    this.getToken()
+    // this.getToken()
+    let token = await this.getToken(username,password);
+    console.log(token)
+    console.log('log in ', token['token']);
+    this.setState({token1 : token['token']});
+    console.log('hello', this.state.token1);
+    console.log('logged');
   }
 
-  getToken = async () => {
+  getToken = async(username=this.state.username, password=this.state.password) => {
     let res = await fetch('http://localhost:5000/tokens', {
           method: 'POST',
           headers :{
-            'Authorization': 'Basic ' + btoa(`${this.state.username}:${this.state.password}`)
+            'Authorization': 'Basic ' + btoa(`${username}:${password}`)
+            // 'Authorization': 'Basic ' + btoa('abcd123:abcd123')
           }
     })
     let token = await res.json();
-    console.log(token);
+    
+    
+    console.log('getToken()', token['token']);
+    // localStorage.setItem('token', token['token'])
     return token
   }
+  
+  // checkToken = async () => {
+  //   // let res = fetch(this.getToken());
+  //   let token = await this.getToken()
+  //   // console.log(this.getToken())
+  //   return token
+  // }
+
 
   render() {
+    
     return (
       <div>
-      <Navbar />
+      <Navbar  getToken={this.getToken} token={this.state.token1}/> 
       <main>
         <Switch>
           <Route exact path="/" render={() => <Home blog={this.blog}  />} />
@@ -67,5 +91,5 @@ export default class App extends Component {
       </div>
     )
   }
-}
 
+}

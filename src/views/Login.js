@@ -14,24 +14,25 @@ export default class Login extends Component {
     
 
     render() {
+        console.log('login rendered')
         if(this.props.redirect) {
             return <Redirect to={this.props.redirect} />
         }
         return (
             <div className="container no-padding">
                 <h1 className="h1">Welcome back, Chef!</h1>
-                <form contentEditable="True" onSubmit={(e) => this.props.handleLogin(e)}>
+                <form  onSubmit={(e) => this.props.handleLogin(e)}>
                     <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Username</label>
+                        <label className="form-label">Username</label>
                         <input type="text" className="form-control" name="username" placeholder="Username"/>
                     </div>
                     <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Password</label>
+                        <label className="form-label">Password</label>
                         <input type="password" className="form-control" name="password" placeholder="Password"/>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" name="remember_me" type="checkbox" value="" id="flexCheckDefault"/>
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                        <input className="form-check-input" name="remember_me" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label className="form-check-label">
                             Remember me
                         </label>
                     </div>

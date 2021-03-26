@@ -34,18 +34,18 @@ export default class Home extends Component {
             <React.Fragment>
 
                 <div className="container">
-                    <div class="jumbotron">
-                        <h1 class="display-4 hungry">Hungry to expand your recipe rolodex?</h1>
-                        <p class="lead">This is an invitation to the internet's first self-proclaimed dinner party where you the user shares, rates, recreates, and etc. amongst other chefs!</p>
-                        <hr class="my-4"></hr>
+                    <div className="jumbotron">
+                        <h1 className="display-4 hungry">Hungry to expand your recipe rolodex?</h1>
+                        <p className="lead">This is an invitation to the internet's first self-proclaimed dinner party where you the user shares, rates, recreates, and etc. amongst other chefs!</p>
+                        <hr className="my-4"></hr>
                         <p>Reddit? Never heard of it. </p>
-                        <p class="lead">
-                            <a class="btn" href="#" role="button">Get Started!</a>
+                        <p className="lead">
+                            <a className="btn" href="/" role="button">Get Started!</a>
                         </p>
                         <br/>
                     </div>
                     <div className="icon"><p>
-                        <i class="fa fa-drumstick-bite"></i>
+                        <i className="fa fa-drumstick-bite"></i>
                         </p>
                     </div>
                     <div className="container">
